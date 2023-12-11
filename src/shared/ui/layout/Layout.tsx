@@ -9,7 +9,7 @@ export function Layout() {
 
   return (
     <AppShell
-      header={{ height: 60 }}
+      header={{ height: 60}}
       // navbar={{ width: 300, breakpoint: "sm", collapsed: { mobile: !opened } }}
       className={styles.shell}
       padding="lg"

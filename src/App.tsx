@@ -7,22 +7,29 @@ import { DatesProvider } from "@mantine/dates";
 import { fetcher } from "@/shared/api";
 import { router } from "@/pages";
 import LoginForm from "@/LoginForm";
+import {useState} from "react";
 
 
 
 export default function App() {
+    const [title, setTitle] = useState(true)
 
+    const closeModal = () => {
+        setTitle(!title)
+    }
 
   return (
       <div className="div">
-          <SWRConfig value={{ fetcher }}>
-              <MantineProvider defaultColorScheme="auto">
-                  <DatesProvider settings={{ locale: "ru" }}>
-                      <RouterProvider router={router} />
-                  </DatesProvider>
-              </MantineProvider>
-          </SWRConfig>
-          <LoginForm/>
+          {
+              title  ? <LoginForm closeModal={closeModal} /> :
+                  <SWRConfig value={{ fetcher }}>
+                  <MantineProvider defaultColorScheme="auto">
+                      <DatesProvider settings={{ locale: "ru" }}>
+                          <RouterProvider router={router} />
+                      </DatesProvider>
+                  </MantineProvider>
+              </SWRConfig>
+          }
       </div>
 
   );

@@ -1,44 +1,20 @@
-import Modal from 'react-modal';
-import {useState} from "react";
 import "./LoginForm.css"
 
-
-const LoginForm = () => {
-
-    const [modalIsOpen, setModalIsOpen] = useState(true);
-
+type LoginType = {
+    closeModal:() => void
+}
 
 
-    const closeModal = () => {
-        setModalIsOpen(false);
-    };
-
-    const modalContent = (
-        <div >
-            <div className="container">
-                <section id="content">
-                    <form action="">
-                        <h1>Login Form</h1>
-                        <div>
-                            <input type="text" placeholder="Username" required="" id="username"/>
-                        </div>
-                        <div>
-                            <input type="password" placeholder="Password" required="" id="password"/>
-                        </div>
-                        <div>
-                            <input onClick={closeModal} type="submit" value="Log in"/>
-                        </div>
-                    </form>
-                </section>
-            </div>
-        </div>
-    );
+const LoginForm = (props:LoginType) => {
 
     return (
-        <div>
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-                {modalContent}
-            </Modal>
+        <div className="login-form">
+            <h2>Log in</h2>
+            <form>
+                <input type="text" placeholder="Имя пользователя" required/>
+                    <input type="password" placeholder="Пароль" required/>
+                        <button onClick={props.closeModal} type="submit">Войти</button>
+            </form>
         </div>
     );
 };

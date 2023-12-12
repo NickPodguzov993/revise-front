@@ -13,7 +13,6 @@ export function Layout() {
       // navbar={{ width: 300, breakpoint: "sm", collapsed: { mobile: !opened } }}
       className={styles.shell}
       padding="lg"
-      zIndex={0}
     >
       <AppShell.Header>
         <Container className={styles.header} size="xl">
